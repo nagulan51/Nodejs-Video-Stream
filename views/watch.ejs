@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Watch - <%= video.title%></title>
+    <style>
+        body
+        {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="body-container" style="max-width: 100%; margin: 0 auto;">
+        <script src="http://localhost:5151/media/jwplayer/jwplayer.js"></script>
+           <div id="aRzklaXf">Loading the player...</div>
+           <script type="text/javascript">
+           var playerInstance = jwplayer("aRzklaXf");
+           playerInstance.setup({
+               sources:{"file":"<%= video.url%>","type":"video/mp4","label":"HD"},
+               image: "https://assets-jpcust.jwpsrv.com/thumbs/aRzklaXf.jpg",
+               mediaid: "aRzklaXf",
+               width: '100%',
+               height: '100%',
+               autostart: false,
+                cast: {
+                    appid: "EDF7B42C",
+                    endscreen: "https://assets-jpcust.jwpsrv.com/watermarks/UhfJXj85.png",
+                    loadscreen: "https://assets-jpcust.jwpsrv.com/watermarks/zAWOWPbu.png",
+                    logo: "https://assets-jpcust.jwpsrv.com/watermarks/mxQeCt89.png"
+                },
+           });
+        </script>
+    </div>
+</body>
