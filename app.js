@@ -63,9 +63,10 @@ app.get('/stream/' ,function(req,res)
     })
 })
 
-app.get('/watch/' ,function(req,res)
+app.get('/watch/:id' ,function(req,res)
 {
-    video = {"title" : "Video", "url" :  req.protocol+"://"+req.get('host')+"/stream?id=1"}
+    var id  = req.query.id;
+    video = {"title" : "Video", "url" :  req.protocol+"://"+req.get('host')+"/stream?id="+id}
     res.render('watch', {video : video})
 })
 
