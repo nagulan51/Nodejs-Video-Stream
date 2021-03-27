@@ -7,7 +7,6 @@ app.set('view engine', 'ejs')
 app.set('views' ,'./views')
 
 app.use('/rs', express.static('public'))
-
 app.get('/', function (req, res, next) 
 {
     message = "Welcome"
