@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <head>
-    <title>Watch - <%= video.title%></title>
+    <title><%= video.title%> - Watch </title>
     <style>
         body
         {
             margin: 0;
             padding: 0;
         }
+        
     </style>
 </head>
 <body>
-    
     <div class="body-container" style="max-width: 100%; margin: 0 auto;">
-        <script src="http://localhost:5151/media/jwplayer/jwplayer.js"></script>
+        <script src="https://cdn.jwplayer.com/libraries/Kb3Lryr8.js"></script>
            <div id="aRzklaXf">Loading the player...</div>
            <script type="text/javascript">
            var playerInstance = jwplayer("aRzklaXf");
@@ -22,14 +22,8 @@
                mediaid: "aRzklaXf",
                width: '100%',
                height: '100%',
-               autostart: false,
-                cast: {
-                    appid: "EDF7B42C",
-                    endscreen: "https://assets-jpcust.jwpsrv.com/watermarks/UhfJXj85.png",
-                    loadscreen: "https://assets-jpcust.jwpsrv.com/watermarks/zAWOWPbu.png",
-                    logo: "https://assets-jpcust.jwpsrv.com/watermarks/mxQeCt89.png"
-                },
-           });
+               autostart: false
+           })
         </script>
     </div>
 </body>

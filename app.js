@@ -1,29 +1,21 @@
-var express = require('express');
+var express = require('express')
 const path = require('path')
-var app = express();
-var fs  = require('fs');
-//ejs view engine
-
+var app = express()
+var fs  = require('fs')
 
 app.set('view engine', 'ejs')
 app.set('views' ,'./views')
 
-app.use('/media', express.static('public'))
-// use line 12 or 14 ! :-)
-//app.use('/media' , express.static(path.join(__dirname, '/public')))
-app.use('/nagulan' , express.static(path.join(__dirname, '/nagulan')))
-
-message = "hello bro"
+app.use('/rs', express.static('public'))
 
 app.get('/', function (req, res, next) 
 {
+    message = "Welcome"
     res.render('home', {message: message})
-    //next();
-});
+})
 
 app.get('/stream/' ,function(req,res)
 {
-
     var id  = req.query.id;
     if (id === null || id === undefined || id === '') 
     {
@@ -32,11 +24,9 @@ app.get('/stream/' ,function(req,res)
         res.end();
         return;
     }
-    const path = 'video.mp4';
+    const path = 'videos/video.mp4'
     fs.stat(path, (err, stat) => 
     {
-
-        // Handle file not found
         if (err !== null && err.code === 'ENOENT') 
         {
             res.sendStatus(404);
@@ -71,18 +61,13 @@ app.get('/stream/' ,function(req,res)
             res.writeHead(200, head);
             fs.createReadStream(path).pipe(res);
         }
-        //end stream
-    });
+    })
+})
 
-
-});
-
-video = {"title" : "title", "url" : "http://localhost:5151/stream?id=1"}
 app.get('/watch/' ,function(req,res)
 {
-    console.log("hello there")
+    video = {"title" : "Video", "url" :  req.protocol+"://"+req.get('host')+"/stream?id=1"}
     res.render('watch', {video : video})
-});
-
+})
 
 app.listen(5151);
